@@ -2,3 +2,7 @@
     width: 100%;
     padding: 20px;
 }
+.clicked {
+    background-color: #00ABFF;
+    color: #fff;
+}

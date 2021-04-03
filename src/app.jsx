@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { axiosInstance } from './api';
 import './app.css';
+import ReplacePage from './views/replacePage';
+import SimilarQuestionInfo from './components/similarQuestionInfo';
 
 import EditPage from './views/editPage';
-import ReplacePage from './views/replacePage';
 
 class App extends Component {
   state = {
     questionList: [],
     similarQuestionList: [],
+    similarQuestionStatus: false,
   };
 
   getQuestion = async () => {
@@ -16,6 +18,9 @@ class App extends Component {
       const { data } = await axiosInstance.get('problems.json');
       this.setState({
         questionList: data.data,
+      });
+      this.state.questionList.forEach(function (item) {
+        item.selected = false;
       });
     } catch (error) {
       console.log(error);
@@ -28,6 +33,9 @@ class App extends Component {
       this.setState({
         similarQuestionList: data.data,
       });
+      this.state.similarQuestionList.forEach(function (item) {
+        item.selected = false;
+      });
     } catch (error) {
       console.log(error);
     }
@@ -38,14 +46,55 @@ class App extends Component {
     this.getSimilarQuestion();
   }
 
+  convertStatus = () => {
+    let status = false;
+    this.state.questionList.forEach(function (item) {
+      if (item.selected) {
+        status = true;
+      }
+    });
+    this.setState({ similarQuestionStatus: status });
+  };
+
+  handleLoad = question => {
+    const questionList = this.state.questionList.map(item => {
+      if (item.id === question.id) {
+        const selected = question.selected;
+        return { ...question, selected: !selected };
+      } else {
+        return { ...item, selected: false };
+      }
+    });
+    this.setState({ questionList }, () => this.convertStatus());
+  };
+
+  handleDelete = question => {
+    const questionList = this.state.questionList.filter(
+      item => item.id !== question.id,
+    );
+    this.setState({ questionList }, () => this.convertStatus());
+  };
+
   render() {
-    const { questionList, similarQuestionList } = this.state;
-    console.log(questionList);
-    console.log(similarQuestionList);
+    const {
+      questionList,
+      similarQuestionList,
+      similarQuestionStatus,
+    } = this.state;
+    let slot;
+    if (similarQuestionStatus) {
+      slot = <ReplacePage questions={similarQuestionList} />;
+    } else {
+      slot = <SimilarQuestionInfo />;
+    }
     return (
       <div className="wrap">
-        <EditPage questions={questionList} />
-        <ReplacePage questions={similarQuestionList} />
+        <EditPage
+          questionList={questionList}
+          onLoad={this.handleLoad}
+          onDelete={this.handleDelete}
+        />
+        {slot}
       </div>
     );
   }
