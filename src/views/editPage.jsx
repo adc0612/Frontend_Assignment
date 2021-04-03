@@ -5,11 +5,15 @@ class EditPage extends Component {
   render() {
     const { questions } = this.props;
     return (
-      <div>
+      <div className="question_wrap">
         <div>학습지 상세 편집</div>
         <ul>
-          {questions.map(question => (
-            <Question key={question.id} question={question} />
+          {questions.map((question, index) => (
+            <Question
+              key={question.id}
+              question={question}
+              questionIndex={index}
+            />
           ))}
         </ul>
       </div>

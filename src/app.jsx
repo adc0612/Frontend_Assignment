@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { axiosInstance } from './api';
+import './app.css';
+
 import EditPage from './views/editPage';
+import ReplacePage from './views/replacePage';
 
 class App extends Component {
   state = {
@@ -40,9 +43,10 @@ class App extends Component {
     console.log(questionList);
     console.log(similarQuestionList);
     return (
-      <>
+      <div className="wrap">
         <EditPage questions={questionList} />
-      </>
+        <ReplacePage questions={similarQuestionList} />
+      </div>
     );
   }
 }
