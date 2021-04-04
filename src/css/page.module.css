@@ -1,0 +1,49 @@
+@value headerBlack from './common/colors.css';
+@value buttonBlue from './common/colors.css';
+
+.nav_header{
+    height: 40px;
+    flex: 0 0 auto;
+    padding: 10px 25px;
+    background-color: #fff;
+}
+
+.list{
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.list::-webkit-scrollbar{
+    display: none;
+}
+
+.nav_text {
+    color: headerBlack;
+    height: 40px;
+    flex: 0 0 auto;
+    padding: 10px 25px;
+    background-color: #fff;
+    margin-top: 3px;
+}
+
+.content_wrap {
+    height: 100%;
+    background-color: #fff;
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content_text {
+    line-height: 25px;
+}
+
+.content_text > span {
+    border: 1px solid #E0E0E0;
+    border-radius: 2px;
+    display: inline-block;
+    padding: 0 8px;
+    color: buttonBlue;
+    font-weight: 700;
+}

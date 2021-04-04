@@ -37,7 +37,7 @@ input,
 select,
 table,
 textarea {
-  font-size: 14px;
+  font-size: 0.8m;
   font-family: sans-serif, ubuntu, HelveticaNeue, AppleSDGothicNeo-Regular, Dotum, '돋움';
 }
 
@@ -117,4 +117,5 @@ button {
 #root {
   height: 100%;
   display: flex;
+  background-color: #e8e8e8;
 }

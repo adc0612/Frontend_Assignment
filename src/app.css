@@ -2,12 +2,21 @@
     width: 100%;
     max-width: 1300px;
     margin: auto;
-    padding: 20px 30px;
+    padding: 0 30px;
     max-height: 725px;
     display: flex;
 }
 
 .question_wrap{
     width: 50%;
-    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.right{
+    margin-left: 3px;
+}
+
+.right > div {
+    text-align: center;
 }
