@@ -6,6 +6,7 @@
 
 ## 설명
 state와 기능 구현은 `app.jsx`에서 구현
+json파일은 `public/data/`폴더에서 불러왔다.
 
 ### getQuestion()
 local의 `문제 json`파일을 불러와 state에 저장하며 해당 문제 선택여부를 저장 할 속성도 같이 저장한다
