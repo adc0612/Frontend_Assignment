@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Question from '../components/question';
 
-class EditPage extends Component {
+class QuestionPage extends Component {
   // handleLoad = (question, questionIndex) => {
   //   // this.props.onLoad(this.props.question);
   //   console.log(`${question.id}`);
@@ -10,7 +10,6 @@ class EditPage extends Component {
 
   render() {
     const { questionList } = this.props;
-
     return (
       <>
         <div className="question_wrap">
@@ -32,4 +31,4 @@ class EditPage extends Component {
   }
 }
 
-export default EditPage;
+export default QuestionPage;

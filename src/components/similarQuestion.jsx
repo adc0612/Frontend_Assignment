@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import styles from '../css/question.module.css';
 
-class Question extends Component {
-  handleLoad = () => {
-    this.props.onLoad(this.props.question);
+class SimilarQuestion extends Component {
+  handleAdd = () => {
+    this.props.onAdd(this.props.question);
   };
 
-  handleDelete = () => {
-    this.props.onDelete(this.props.question);
+  handleReplace = () => {
+    this.props.onReplace(this.props.question, this.props.questionIndex);
   };
 
   render() {
@@ -18,13 +18,8 @@ class Question extends Component {
         <div>
           <span>{problemType}</span>
           <span>{unitName}</span>
-          <button
-            onClick={this.handleLoad}
-            className={selected ? styles['clicked'] : ''}
-          >
-            유사문항
-          </button>
-          <button onClick={this.handleDelete}>삭제</button>
+          <button onClick={this.handleAdd}>추가</button>
+          <button onClick={this.handleReplace}>교체</button>
         </div>
         <div>
           <span>{questionIndex}</span>
@@ -36,4 +31,4 @@ class Question extends Component {
   }
 }
 
-export default Question;
+export default SimilarQuestion;
